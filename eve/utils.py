@@ -420,6 +420,9 @@ def auto_fields(resource):
     if resource_def['soft_delete'] is True:
         fields.append(config.DELETED)
 
+    if config.USE_TOKEN is True and config.TOKEN_RESOURCE == resource:
+        fields.append(config.TOKEN)
+
     return fields
 
 # Base string type that is compatible with both Python 2.x and 3.x.

@@ -122,6 +122,14 @@ STANDARD_ERRORS = [400, 401, 403, 404, 405, 406, 409, 410, 412, 422]
 # we access a specific version
 LATEST_VERSION = '_latest_version'
 
+# token is used for users JWT token
+USE_TOKEN = True
+TOKEN_RESOURCE = 'users'
+TOKEN = '_token'
+
+JWT_ALGORITHM = 'HS256'
+JWT_SECRET = 'secret'
+
 # appended to ID_FIELD, holds the original document id in parallel collection
 VERSION_ID_SUFFIX = '_document'
 VERSION_DIFF_INCLUDE = []       # always include these fields when diffing

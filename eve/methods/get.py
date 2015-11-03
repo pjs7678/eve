@@ -103,6 +103,8 @@ def get(resource, **lookup):
     # deleted unless req.show_deleted is True
     for document in cursor:
         build_response_document(document, resource, embedded_fields)
+        if config.USE_TOKEN is True and config.TOKEN in document:
+            del document[config.TOKEN]
         documents.append(document)
 
         # build last update for entire response
@@ -351,6 +353,9 @@ def getitem(resource, **lookup):
         else:
             getattr(app, "on_fetched_item")(resource, response)
             getattr(app, "on_fetched_item_%s" % resource)(response)
+
+    if config.USE_TOKEN is True and config.TOKEN in response:
+        del response[config.TOKEN]
 
     return response, last_modified, etag, 200
 
