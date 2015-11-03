@@ -724,6 +724,8 @@ def resolve_media_files(document, resource):
             # start with the basic file object
             if config.RETURN_MEDIA_AS_BASE64_STRING:
                 ret_file = base64.encodestring(_file.read())
+            elif config.RETURN_MEDIA_AS_URL_ITSELF:
+                ret_file = file_id
             elif config.RETURN_MEDIA_AS_URL:
                 prefix = config.MEDIA_BASE_URL if config.MEDIA_BASE_URL \
                     is not None else app.api_prefix
